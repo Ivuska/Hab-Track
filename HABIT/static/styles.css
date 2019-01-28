@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    height: 100vh;
+    width: 100%;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    min-height: 100vh;
+    text-align: center;
+    font-family: "Lucida Console", Monaco, monospace;
+    position: relative;
+}
+
+/*.wrapper {
+    margin: 10rem;
+
+}
+*/
+
+.input-wrapper {
+    width: 100%;
+}
+
+.habit-item {
+    margin: 3rem;
+    display: flex;
+}
+
+.container-fluid {
+    padding-top: 70px;
+    padding-bottom: 20px;
+}
+
+.habit-item > * {
+    border: 1px solid grey;
+    margin: 5rem;
+}
+
+.bg1 {
+    background-color: aquamarine;
+}
+.bg2 {
+    background-color: linen;
+}
+
+.bg3 {
+    background-color: lightseagreen;
+}
+
+.navbar {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 20px;
+}
+
+.navbar-nav li a:hover {
+    color: #1abc9c !important;
+}
+
+table {
+    font-size: large;
+}
+
+.habits {
+    margin: 20px 0 20px 0;
+}
+
+#todayDate {
+    font-size: 20px;
+}
+
+.myChart {
+    height: 50px;
+}
+

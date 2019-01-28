@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hab-Track</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+
+</head>
+
+<body data-spy="scroll" data-target="#navbar" data-offset="50">
+
+    <div class="wrapper">
+
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Hab-Track</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="#active" class="nav-link">Active habits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#graphs" class="nav-link">Graphs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#addHabit" class="nav-link"> + Add new habit</a>
+                    </li>
+                </ul>
+                <ul class="nav ml-auto">
+                    <li>User</li>
+                </ul>
+            </div>
+        </nav>
+
+
+
+        <div id="active" class="habits-wrapper bg3 container-fluid">
+            <h1>Active habits</h1>
+            <div class="date-info">
+                <div class="today-date" id="todayDate">Pondělí 15.7.2019</div>
+						</div>
+						<form action = "http://localhost:5000/result" method = "POST">
+            <table id="table" class="table table-hover">
+									{% for key, value in result %}
+									<tr>
+										 <th> {{ key }} </th>
+										 <td> {{ value }} </td>
+										 <td><input type="checkbox" name="done"></td>
+									</tr>
+							 {% endfor %}
+						</table>
+						<div class='text-right'>
+						<button type="button" class="btn btn-lg">Submit</button>
+						</div>
+					</form>
+            <!--<button type="button" class="btn btn-lg">Submit</button>-->
+        </div>
+
+
+
+        <div id="graphs" class="container-fluid bg2">
+            <h2>Statistika</h2>
+            <canvas class="myChart" id="myChart1" height="40"></canvas>
+            <canvas class="myChart" id="myChart2" height="40"></canvas>
+            <canvas class="myChart" id="myChart3" height="40"></canvas>
+        </div>
+
+        <div id="addHabit" class="input-wrapper bg1 container-fluid">
+						<h2>Add new habit</h2>
+						<form action = "http://localhost:5000/addhabit" method = "POST">
+            <div class="habits">
+                <div class="input-group input-group-lg">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="habit">Habit</span>
+                    </div>
+                    <input type="text" class="form-control" name="habit" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                </div>
+
+                <div class="input-group input-group-lg">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="motivation">Motivation</span>
+                    </div>
+                    <input type="text" class="form-control" name="motivation" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-lg">Add</button>
+
+				</div>
+			</form>
+
+    </div>
+
+    <script src="http://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo">
+        crossorigin = "anonymous"</script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="http://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+
+</html>
